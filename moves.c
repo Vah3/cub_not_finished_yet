@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vagevorg <vagevorg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/17 13:11:40 by vagevorg          #+#    #+#             */
+/*   Updated: 2023/01/17 17:18:08 by vagevorg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "alg_header.h"
 
-extern int map[24][24];
+extern int	g_map[24][24];
 
-void	rotate(t_player_set *player,double rot_)
+void	rotate(t_player_set *player, double rot_)
 {
-	double old;
+	double	old;
 
 	old = player->dir_x;
 	player->dir_x = old * cos(rot_) - player->dir_y * sin(rot_);
@@ -19,14 +31,14 @@ void	move_left(t_player_set *player)
 	int	y;
 	int	x;
 
-	x = (int)(player->pos_x  - player->plane_x * (move_speed + 0.1));
+	x = (int)(player->pos_x - player->plane_x * (MOVE_SPEED + 0.1));
 	y = (int)player->pos_y;
-	if (map[x][y] == 0)
-		player->pos_x -= player->plane_x * (move_speed  );
-	y = (int)(player->pos_y - player->plane_y * (move_speed + 0.1 ));
+	if (g_map[x][y] == 0)
+		player->pos_x -= player->plane_x * (MOVE_SPEED);
+	y = (int)(player->pos_y - player->plane_y * (MOVE_SPEED + 0.1));
 	x = (int)player->pos_x;
-	if (map[x][y] == 0)
-		player->pos_y -= player->plane_y * (move_speed );
+	if (g_map[x][y] == 0)
+		player->pos_y -= player->plane_y * (MOVE_SPEED);
 }
 
 void	move_right(t_player_set *player)
@@ -34,14 +46,14 @@ void	move_right(t_player_set *player)
 	int	y;
 	int	x;
 
-	x = (int)(player->pos_x + player->plane_x * (move_speed + 0.1));
+	x = (int)(player->pos_x + player->plane_x * (MOVE_SPEED + 0.1));
 	y = (int)player->pos_y;
-	if (map[x][y] == 0)
-		player->pos_x += player->plane_x * (move_speed  );
-	y = (int)(player->pos_y + player->plane_y * (move_speed + 0.1 ));
+	if (g_map[x][y] == 0)
+		player->pos_x += player->plane_x * (MOVE_SPEED);
+	y = (int)(player->pos_y + player->plane_y * (MOVE_SPEED + 0.1));
 	x = (int)player->pos_x;
-	if (map[x][y] == 0)
-		player->pos_y += player->plane_y * (move_speed );
+	if (g_map[x][y] == 0)
+		player->pos_y += player->plane_y * (MOVE_SPEED);
 }
 
 void	move_down(t_player_set *player)
@@ -49,14 +61,14 @@ void	move_down(t_player_set *player)
 	int	y;
 	int	x;
 
-	x = (int)(player->pos_x - player->dir_x * (move_speed + 0.1));
+	x = (int)(player->pos_x - player->dir_x * (MOVE_SPEED + 0.1));
 	y = (int)player->pos_y;
-	if (map[x][y] == 0)
-		player->pos_x -= player->dir_x * (move_speed  );
-	y = (int)(player->pos_y - player->dir_y * (move_speed + 0.1));
+	if (g_map[x][y] == 0)
+		player->pos_x -= player->dir_x * (MOVE_SPEED);
+	y = (int)(player->pos_y - player->dir_y * (MOVE_SPEED + 0.1));
 	x = (int)player->pos_x;
-	if (map[x][y] == 0)
-		player->pos_y -= player->dir_y * (move_speed );
+	if (g_map[x][y] == 0)
+		player->pos_y -= player->dir_y * (MOVE_SPEED);
 }
 
 void	move_up(t_player_set *player)
@@ -64,12 +76,12 @@ void	move_up(t_player_set *player)
 	int	y;
 	int	x;
 
-	x = (int)(player->pos_x + player->dir_x * (move_speed + 0.1));
+	x = (int)(player->pos_x + player->dir_x * (MOVE_SPEED + 0.1));
 	y = (int)player->pos_y;
-	if (map[x][y] == 0)
-		player->pos_x += player->dir_x * (move_speed  );
-	y = (int)(player->pos_y + player->dir_y * (move_speed + 0.1));
+	if (g_map[x][y] == 0)
+		player->pos_x += player->dir_x * (MOVE_SPEED);
+	y = (int)(player->pos_y + player->dir_y * (MOVE_SPEED + 0.1));
 	x = (int)player->pos_x;
-	if (map[x][y] == 0)
-		player->pos_y += player->dir_y * (move_speed );
+	if (g_map[x][y] == 0)
+		player->pos_y += player->dir_y * (MOVE_SPEED);
 }
